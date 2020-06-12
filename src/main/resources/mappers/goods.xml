@@ -7,4 +7,11 @@
     <select id="findById" parameterType="Integer"  resultType="com.weng.ssm.entity.Goods" >
         SELECT * FROM t_goods where goods_id=#{value}
     </select>
+    <resultMap id="goodsMap" type="com.weng.ssm.entity.Goods">
+        <id column="goods_id" property="goodsId"></id>
+<collection property="goodsDetails" select="com.weng.ssm.mapper.GoodsDetailMapper.findByGoodsId" column="goods_id"></collection>
+    </resultMap>
+    <select id="selectOneToMany" resultMap="goodsMap">
+    select * from t_goods limit 0,10
+    </select>
 </mapper>

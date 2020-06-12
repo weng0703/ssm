@@ -1,5 +1,7 @@
 package com.weng.ssm.entity;
 
+import java.util.List;
+
 //DTO
 /*@@请加Q群：369531466,与几百名工程师共同学习,遇到难题可随时@老齐,多一点真诚，少一点套路@@*/
 public class Goods {
@@ -11,6 +13,7 @@ public class Goods {
     private Float discount;
     private Integer isFreeDelivery;
     private Integer categoryId;
+    private List<GoodsDetail> goodsDetails;
 
     public Integer getGoodsId() {
         return goodsId;

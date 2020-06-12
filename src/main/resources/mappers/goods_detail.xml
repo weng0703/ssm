@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace指向接口-->
+<mapper namespace="com.weng.ssm.mapper.GoodsDetailMapper">
+    <select id="findByGoodsId" parameterType="Integer" resultType="com.weng.ssm.entity.GoodsDetail">
+        select * from t_goods_detail where goods_id = #{value}
+    </select>
+    <resultMap id="goodsDetailMap" type="com.weng.ssm.entity.GoodsDetail">
+        <id property="gdId" column="gd_id"></id>
+        <collection property="goods" select="com.weng.ssm.mapper.GoodsMapper.findById" column="goods_id"></collection>
+    </resultMap>
+<select id="selectManyToOne" resultMap="goodsDetailMap">
+    select * from t_goods_detail limit 0,100
+</select>
+</mapper>
